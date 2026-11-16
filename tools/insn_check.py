@@ -66,7 +66,7 @@ BASE = {'movw', 'movt', 'sdiv', 'udiv', 'ldrex', 'ldrexb', 'ldrexh', 'strex', 's
 V8M = {'lda', 'ldab', 'ldah', 'stl', 'stlb', 'stlh', 'ldaex', 'ldaexb', 'ldaexh', 'stlex', 'stlexb', 'stlexh', 'sg',
        'tt', 'ttt', 'tta', 'ttat', 'bxns', 'blxns'}
 DSP = set('''qadd qdadd qsub qdsub sadd16 sadd8 ssub16 ssub8 sasx ssax qadd16 qadd8 qsub16 qsub8 qasx qsax shadd16
-    shadd8 shsub16 shsub8 shasx shsax uadd16 uadd8 usub16 usub8 uasx usax uqadd16 uqadd8 uqsub16 uqsub8 uqasx uqasx
+    shadd8 shsub16 shsub8 shasx shsax uadd16 uadd8 usub16 usub8 uasx usax uqadd16 uqadd8 uqsub16 uqsub8 uqasx uqsax
     uhadd16 uhadd8 uhsub16 uhsub8 uhasx uhsax smlabb smlabt smlatb smlatt smlad smladx smlalbb smlalbt smlaltb
     smlaltt smlald smlaldx smlawb smlawt smlsd smlsdx smlsld smlsldx smmla smmlar smmls smmlsr smmul smmulr smuad
     smuadx smulbb smulbt smultb smultt smulwb smulwt smusd smusdx umaal pkhbt pkhtb sel ssat16 usat16 sxtab
@@ -205,7 +205,7 @@ def main():
     p = argparse.ArgumentParser(prog='insn_check.py', description=__doc__.split('\n\n')[0])
     p.add_argument('elf', type=Path, help='the linked image (qbuild output or your board build)')
     paths.add_cpu_option(p, 'the core the image is for (default cortex-m4f, or KMICRO_CPU)')
-    p.add_argument('--all', action='store_true', help='list every instruction that is out of place (default: the first 20)')
+    p.add_argument('--all', action='store_true', help='list every instruction that is out of place')
     a = p.parse_args()
     cpu = paths.select_cpu(a.cpu)
     if paths.profile() != 'M':
